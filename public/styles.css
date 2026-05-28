@@ -259,6 +259,30 @@ body {
   padding: 26px;
 }
 
+.gallery-visual-head {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.52fr) minmax(300px, 0.48fr);
+  gap: 24px;
+  align-items: center;
+}
+
+.gallery-poster {
+  overflow: hidden;
+  border: 1px solid rgba(242, 234, 216, 0.14);
+  background: #080908;
+}
+
+.gallery-poster img {
+  display: block;
+  width: 100%;
+  max-height: min(760px, 72vh);
+  object-fit: contain;
+}
+
+.gallery-copy p:not(.kicker) {
+  max-width: 560px;
+}
+
 .gallery-routes {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
@@ -589,7 +613,8 @@ label {
   .concept,
   .route-panel,
   .spots,
-  .gallery-routes {
+  .gallery-routes,
+  .gallery-visual-head {
     grid-template-columns: 1fr;
   }
 
@@ -644,6 +669,14 @@ label {
   .howto h2,
   .gallery-head h1 {
     font-size: 28px;
+  }
+
+  .gallery-head {
+    padding: 16px;
+  }
+
+  .gallery-poster img {
+    max-height: none;
   }
 
   main {
