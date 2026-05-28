@@ -444,6 +444,21 @@ h1 {
   background: #08100f;
 }
 
+.reception-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.reception-gallery img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  display: block;
+  object-fit: cover;
+  border: 1px solid var(--line);
+  background: #080908;
+}
+
 .workbench {
   display: grid;
   grid-template-columns: minmax(420px, 1fr) minmax(420px, 0.95fr);
@@ -681,6 +696,10 @@ label {
 
   main {
     padding: 14px;
+  }
+
+  .reception-gallery {
+    grid-template-columns: 1fr;
   }
 
   .form {
