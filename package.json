@@ -1,0 +1,13 @@
+{
+  "name": "majin-island-reception",
+  "version": "0.1.0",
+  "description": "Local reception desk for the #魔人島 X participation flow",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}

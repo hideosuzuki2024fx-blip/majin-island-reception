@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>魔人島 移住者受付</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <div class="layout">
+      <aside class="rail">
+        <div class="brand">
+          <div class="seal">魔</div>
+          <div>
+            <strong>魔人島</strong>
+            <span>移住者受付</span>
+          </div>
+        </div>
+        <nav>
+          <a href="#reception">受付</a>
+          <a href="#ledger">魔人簿</a>
+          <a href="#news">島内設定</a>
+        </nav>
+        <div class="rail-note">
+          観光、留学、移住、見学歓迎。島の食べ物を口にした場合、住民化が進むことがあります。
+        </div>
+      </aside>
+
+      <main>
+        <section class="top">
+          <div class="copy">
+            <p class="kicker">#魔人島 公式ではないローカル受付</p>
+            <h1>迷い込んだキャラを、魔人島の住人として迎える。</h1>
+            <p>キャラ情報を入れると、魔人簿、画像生成プロンプト、X投稿文をまとめて作ります。</p>
+          </div>
+          <canvas id="islandMap" width="520" height="340" aria-label="魔人島案内図"></canvas>
+        </section>
+
+        <section class="workbench" id="reception">
+          <form id="receptionForm" class="form">
+            <div class="section-title">
+              <span>01</span>
+              <h2>入島受付</h2>
+            </div>
+
+            <label>
+              <span>キャラ名</span>
+              <input name="name" placeholder="例：木田 / 葉山 / AIAYASE">
+            </label>
+
+            <label>
+              <span>Xアカウント</span>
+              <input name="handle" placeholder="@example">
+            </label>
+
+            <label>
+              <span>来島区分</span>
+              <select name="visitType">
+                <option>見学</option>
+                <option>観光</option>
+                <option>留学</option>
+                <option>移住</option>
+                <option>スタッフ応募</option>
+              </select>
+            </label>
+
+            <label>
+              <span>魔人化トリガー</span>
+              <select name="trigger">
+                <option>小籠包</option>
+                <option>肉まん</option>
+                <option>あんまん</option>
+                <option>魔人シネマの半券</option>
+                <option>受付の魔人簿</option>
+                <option>島の空気</option>
+              </select>
+            </label>
+
+            <label>
+              <span>配属先</span>
+              <select name="assignment">
+                <option>移住者受付</option>
+                <option>魔人シネマ</option>
+                <option>屋台通り</option>
+                <option>巨大書庫</option>
+                <option>港の案内所</option>
+                <option>女神バイト</option>
+                <option>未配属の住民</option>
+              </select>
+            </label>
+
+            <label>
+              <span>魔人化の濃さ</span>
+              <select name="intensity">
+                <option value="soft">30分で見た目は戻る</option>
+                <option value="standard" selected>住民として定着</option>
+                <option value="deep">島の神話に組み込まれる</option>
+              </select>
+            </label>
+
+            <label class="full">
+              <span>元キャラの特徴</span>
+              <textarea name="traits" rows="4" placeholder="髪型、色、服、小物、性格、残したい要素など"></textarea>
+            </label>
+
+            <label class="full">
+              <span>投稿メモ</span>
+              <textarea name="memo" rows="3" placeholder="歓迎会にする、映画館ネタを入れる、給与は小籠包など"></textarea>
+            </label>
+
+            <label class="full">
+              <span>投稿後のX URL控え</span>
+              <input name="sourceUrl" placeholder="投稿後にURLを貼ると、この端末の控えに残せます">
+            </label>
+
+            <div class="actions full">
+              <button type="submit" class="primary">魔人簿を生成</button>
+              <button type="button" id="sampleBtn">サンプル入力</button>
+              <button type="reset">消去</button>
+            </div>
+          </form>
+
+          <section class="output">
+            <div class="section-title">
+              <span>02</span>
+              <h2>生成結果</h2>
+            </div>
+            <div class="tabs">
+              <button class="tab active" data-tab="ledgerText">魔人簿</button>
+              <button class="tab" data-tab="promptText">画像プロンプト</button>
+              <button class="tab" data-tab="postText">X投稿文</button>
+            </div>
+            <textarea id="ledgerText" class="result-pane"></textarea>
+            <textarea id="promptText" class="result-pane" hidden></textarea>
+            <textarea id="postText" class="result-pane" hidden></textarea>
+            <div class="actions">
+              <button id="copyActiveBtn">表示中をコピー</button>
+              <button id="saveBtn">この端末に控える</button>
+              <button id="tweetBtn" class="primary">X投稿画面を開く</button>
+            </div>
+          </section>
+        </section>
+
+        <section class="ledger" id="ledger">
+          <div class="section-title">
+            <span>03</span>
+            <h2>この端末の控え</h2>
+          </div>
+          <div class="x-links">
+            <a href="https://x.com/search?q=%23%E9%AD%94%E4%BA%BA%E5%B3%B6&src=typed_query&f=live" target="_blank" rel="noreferrer">#魔人島</a>
+            <a href="https://x.com/search?q=%23%E9%AD%94%E4%BA%BA%E5%B3%B6%E4%BD%8F%E6%B0%91%E7%A5%A8&src=typed_query&f=live" target="_blank" rel="noreferrer">#魔人島住民票</a>
+            <a href="https://x.com/search?q=%23%E9%AD%94%E4%BA%BA%E5%B3%B6%E9%AD%94%E4%BA%BA%E7%B0%BF&src=typed_query&f=live" target="_blank" rel="noreferrer">#魔人島魔人簿</a>
+            <a href="https://x.com/search?q=%23%E9%AD%94%E4%BA%BA%E5%B3%B6%E5%8F%97%E4%BB%98&src=typed_query&f=live" target="_blank" rel="noreferrer">#魔人島受付</a>
+          </div>
+          <div id="residentList" class="resident-list"></div>
+        </section>
+
+        <section class="lore" id="news">
+          <div class="section-title">
+            <span>04</span>
+            <h2>島内設定メモ</h2>
+          </div>
+          <div class="lore-grid">
+            <article>
+              <h3>受付</h3>
+              <p>受付を済ませると、巨大な書庫から魔人簿が出てきます。そこには、なぜか名前と魔人化後の姿がすでに記されています。</p>
+            </article>
+            <article>
+              <h3>食べ物</h3>
+              <p>小籠包、肉まん、あんまんは住民化の代表的なトリガーです。給与として現物支給される場合があります。</p>
+            </article>
+            <article>
+              <h3>魔人シネマ</h3>
+              <p>歓迎会やアルバイト先として使いやすい映画館です。半券やエプロンをネタにできます。</p>
+            </article>
+            <article>
+              <h3>参加条件</h3>
+              <p>魔人であること。二次使用、コラボ可能なキャラであること。観光、留学、移住、スタッフ応募は歓迎。</p>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div id="toast" class="toast" hidden></div>
+    <script src="./app.js" type="module"></script>
+  </body>
+</html>
