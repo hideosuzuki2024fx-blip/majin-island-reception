@@ -287,6 +287,112 @@ body {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.gallery-browser {
+  border: 1px solid rgba(242, 234, 216, 0.14);
+  background: rgba(21, 23, 19, 0.9);
+  padding: 20px;
+}
+
+.gallery-toolbar {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+  border-bottom: 1px solid rgba(242, 234, 216, 0.14);
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+}
+
+.gallery-toolbar h2 {
+  font-size: 28px;
+}
+
+.gallery-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.gallery-tags span {
+  border: 1px solid rgba(79, 157, 147, 0.58);
+  background: #0d1917;
+  color: var(--ink);
+  padding: 7px 10px;
+  font-size: 13px;
+}
+
+.majin-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.majin-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  overflow: hidden;
+  border: 1px solid rgba(242, 234, 216, 0.14);
+  background: #10120f;
+}
+
+.majin-card > a {
+  display: block;
+  overflow: hidden;
+  background: #080908;
+}
+
+.majin-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  display: block;
+  object-fit: cover;
+}
+
+.majin-card div {
+  padding: 14px;
+}
+
+.majin-card span {
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.majin-card h3 {
+  margin: 8px 0;
+  font-size: 21px;
+}
+
+.majin-card p {
+  line-height: 1.7;
+  font-size: 14px;
+}
+
+.feature-card {
+  grid-column: span 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+}
+
+.feature-card img {
+  height: 100%;
+  min-height: 320px;
+}
+
+.feature-card div {
+  align-self: end;
+}
+
+.text-link {
+  display: inline-flex;
+  margin-top: 12px;
+  color: var(--teal);
+  text-decoration: none;
+  font-weight: 800;
+}
+
 button,
 input,
 select,
@@ -627,8 +733,19 @@ label {
   .route-panel,
   .spots,
   .gallery-routes,
-  .gallery-visual-head {
+  .gallery-visual-head,
+  .majin-grid,
+  .feature-card {
     grid-template-columns: 1fr;
+  }
+
+  .feature-card {
+    grid-column: span 1;
+    display: flex;
+  }
+
+  .feature-card img {
+    min-height: 0;
   }
 
   .rail {
@@ -690,6 +807,19 @@ label {
 
   .gallery-poster img {
     max-height: none;
+  }
+
+  .gallery-browser {
+    padding: 16px;
+  }
+
+  .gallery-toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .gallery-toolbar h2 {
+    font-size: 24px;
   }
 
   main {
