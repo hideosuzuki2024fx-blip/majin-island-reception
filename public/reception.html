@@ -46,6 +46,15 @@
               <h2>入島受付</h2>
             </div>
 
+            <div class="quick-guide full">
+              <strong>使い方</strong>
+              <ol>
+                <li>キャラ名と特徴を書く</li>
+                <li>「X投稿文を作る」を押す</li>
+                <li>投稿文をコピーして、画像と一緒にXへ投稿</li>
+              </ol>
+            </div>
+
             <label>
               <span>キャラ名</span>
               <input name="name" placeholder="例：木田 / 葉山 / AIAYASE">
@@ -56,51 +65,6 @@
               <input name="handle" placeholder="@example">
             </label>
 
-            <label>
-              <span>来島区分</span>
-              <select name="visitType">
-                <option>見学</option>
-                <option>観光</option>
-                <option>留学</option>
-                <option>移住</option>
-                <option>スタッフ応募</option>
-              </select>
-            </label>
-
-            <label>
-              <span>魔人化トリガー</span>
-              <select name="trigger">
-                <option>小籠包</option>
-                <option>肉まん</option>
-                <option>あんまん</option>
-                <option>魔人シネマの半券</option>
-                <option>受付の魔人簿</option>
-                <option>島の空気</option>
-              </select>
-            </label>
-
-            <label>
-              <span>配属先</span>
-              <select name="assignment">
-                <option>移住者受付</option>
-                <option>魔人シネマ</option>
-                <option>屋台通り</option>
-                <option>巨大書庫</option>
-                <option>港の案内所</option>
-                <option>女神バイト</option>
-                <option>未配属の住民</option>
-              </select>
-            </label>
-
-            <label>
-              <span>魔人化の濃さ</span>
-              <select name="intensity">
-                <option value="soft">30分で見た目は戻る</option>
-                <option value="standard" selected>住民として定着</option>
-                <option value="deep">島の神話に組み込まれる</option>
-              </select>
-            </label>
-
             <label class="full">
               <span>元キャラの特徴</span>
               <textarea name="traits" rows="4" placeholder="髪型、色、服、小物、性格、残したい要素など"></textarea>
@@ -108,16 +72,66 @@
 
             <label class="full">
               <span>投稿メモ</span>
-              <textarea name="memo" rows="3" placeholder="歓迎会にする、映画館ネタを入れる、給与は小籠包など"></textarea>
+              <textarea name="memo" rows="3" placeholder="例：小籠包を食べて魔人化、魔人シネマで歓迎会、受付で魔人簿が開く"></textarea>
             </label>
 
-            <label class="full">
-              <span>投稿後のX URL控え</span>
-              <input name="sourceUrl" placeholder="投稿後にURLを貼ると、この端末の控えに残せます">
-            </label>
+            <details class="advanced-options full">
+              <summary>細かく設定する</summary>
+              <div class="advanced-grid">
+                <label>
+                  <span>来島区分</span>
+                  <select name="visitType">
+                    <option>見学</option>
+                    <option>観光</option>
+                    <option>留学</option>
+                    <option>移住</option>
+                    <option>スタッフ応募</option>
+                  </select>
+                </label>
+
+                <label>
+                  <span>魔人化トリガー</span>
+                  <select name="trigger">
+                    <option>小籠包</option>
+                    <option>肉まん</option>
+                    <option>あんまん</option>
+                    <option>魔人シネマの半券</option>
+                    <option>受付の魔人簿</option>
+                    <option>島の空気</option>
+                  </select>
+                </label>
+
+                <label>
+                  <span>配属先</span>
+                  <select name="assignment">
+                    <option>移住者受付</option>
+                    <option>魔人シネマ</option>
+                    <option>屋台通り</option>
+                    <option>巨大書庫</option>
+                    <option>港の案内所</option>
+                    <option>女神バイト</option>
+                    <option>未配属の住民</option>
+                  </select>
+                </label>
+
+                <label>
+                  <span>魔人化の濃さ</span>
+                  <select name="intensity">
+                    <option value="soft">30分で見た目は戻る</option>
+                    <option value="standard" selected>住民として定着</option>
+                    <option value="deep">島の神話に組み込まれる</option>
+                  </select>
+                </label>
+
+                <label class="full">
+                  <span>投稿後のX URL控え</span>
+                  <input name="sourceUrl" placeholder="投稿後にURLを貼ると、この端末の控えに残せます">
+                </label>
+              </div>
+            </details>
 
             <div class="actions full">
-              <button type="submit" class="primary">魔人簿を生成</button>
+              <button type="submit" class="primary">X投稿文を作る</button>
               <button type="button" id="sampleBtn">サンプル入力</button>
               <button type="reset">消去</button>
             </div>
@@ -129,13 +143,13 @@
               <h2>生成結果</h2>
             </div>
             <div class="tabs">
-              <button class="tab active" data-tab="ledgerText">魔人簿</button>
+              <button class="tab active" data-tab="postText">X投稿文</button>
+              <button class="tab" data-tab="ledgerText">魔人簿</button>
               <button class="tab" data-tab="promptText">画像プロンプト</button>
-              <button class="tab" data-tab="postText">X投稿文</button>
             </div>
-            <textarea id="ledgerText" class="result-pane"></textarea>
+            <textarea id="postText" class="result-pane"></textarea>
+            <textarea id="ledgerText" class="result-pane" hidden></textarea>
             <textarea id="promptText" class="result-pane" hidden></textarea>
-            <textarea id="postText" class="result-pane" hidden></textarea>
             <div class="actions">
               <button id="copyActiveBtn">表示中をコピー</button>
               <button id="saveBtn">この端末に控える</button>

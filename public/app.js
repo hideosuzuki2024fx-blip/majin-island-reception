@@ -7,7 +7,7 @@ const toastEl = document.getElementById('toast');
 const storageKey = 'majinIslandReceptionDrafts';
 
 let currentDraft = null;
-let activePane = ledgerText;
+let activePane = postText;
 
 const departments = {
   '移住者受付': '入島者の名前を魔人簿へ照合する係',
@@ -108,6 +108,17 @@ function renderDraft(draft) {
   ledgerText.value = draft.ledger;
   promptText.value = draft.prompt;
   postText.value = draft.post;
+  activateTab('postText');
+}
+
+function activateTab(id) {
+  document.querySelectorAll('.tab').forEach((tab) => {
+    tab.classList.toggle('active', tab.dataset.tab === id);
+  });
+  document.querySelectorAll('.result-pane').forEach((pane) => {
+    pane.hidden = pane.id !== id;
+  });
+  activePane = document.getElementById(id);
 }
 
 async function copyText(text) {
@@ -227,7 +238,7 @@ function drawMap() {
 form.addEventListener('submit', (event) => {
   event.preventDefault();
   renderDraft(createDraft(formValues()));
-  toast('魔人簿を生成しました。');
+  toast('X投稿文を作成しました。');
 });
 
 document.getElementById('sampleBtn').addEventListener('click', () => {
@@ -244,13 +255,7 @@ document.getElementById('sampleBtn').addEventListener('click', () => {
 
 document.querySelectorAll('.tab').forEach((button) => {
   button.addEventListener('click', () => {
-    document.querySelectorAll('.tab').forEach((tab) => tab.classList.remove('active'));
-    document.querySelectorAll('.result-pane').forEach((pane) => {
-      pane.hidden = true;
-    });
-    button.classList.add('active');
-    activePane = document.getElementById(button.dataset.tab);
-    activePane.hidden = false;
+    activateTab(button.dataset.tab);
   });
 });
 
