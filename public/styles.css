@@ -435,6 +435,144 @@ body {
   font-size: 13px;
 }
 
+.agency-page {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.agency-head,
+.talent-directory {
+  border: 1px solid rgba(242, 234, 216, 0.14);
+  background: rgba(21, 23, 19, 0.92);
+}
+
+.agency-head {
+  padding: 24px;
+}
+
+.agency-head h1 {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.agency-head p:not(.kicker) {
+  max-width: 760px;
+  line-height: 1.75;
+}
+
+.talent-directory {
+  display: grid;
+  gap: 0;
+}
+
+.talent-card {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.34fr) minmax(0, 0.66fr);
+  gap: 18px;
+  padding: 18px;
+  border-top: 1px solid rgba(242, 234, 216, 0.14);
+}
+
+.talent-card:first-child {
+  border-top: 0;
+}
+
+.talent-card header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.talent-card header span {
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.talent-card h2 {
+  font-size: 28px;
+  line-height: 1.22;
+}
+
+.talent-card header a,
+.asset-slot,
+.asset-slot.filled {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.talent-card header a {
+  border: 1px solid rgba(79, 157, 147, 0.58);
+  background: #0d1917;
+  padding: 8px 10px;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.talent-card > p {
+  grid-column: 1;
+  align-self: end;
+  line-height: 1.7;
+  font-size: 14px;
+}
+
+.asset-row {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.asset-slot {
+  min-height: 100%;
+  border: 1px solid rgba(242, 234, 216, 0.14);
+  background: #0e100e;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.asset-slot img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  display: block;
+  background: #080908;
+}
+
+.asset-slot strong,
+.asset-slot span {
+  padding: 10px;
+  font-size: 13px;
+  color: var(--gold);
+}
+
+.asset-slot.empty {
+  align-items: center;
+  justify-content: center;
+  min-height: 210px;
+  border-style: dashed;
+  color: var(--muted);
+}
+
+.asset-slot.empty span {
+  padding: 0;
+}
+
+.asset-slot.empty em {
+  margin-top: 8px;
+  font-size: 12px;
+  font-style: normal;
+  color: var(--muted);
+}
+
 button,
 input,
 select,
@@ -901,6 +1039,49 @@ label {
 
   .gallery-toolbar h2 {
     font-size: 24px;
+  }
+
+  .agency-page {
+    padding: 14px;
+  }
+
+  .agency-head {
+    padding: 18px;
+  }
+
+  .agency-head h1 {
+    font-size: 32px;
+  }
+
+  .talent-card {
+    grid-template-columns: 1fr;
+    padding: 14px;
+  }
+
+  .talent-card > p,
+  .asset-row {
+    grid-column: auto;
+  }
+
+  .asset-row {
+    grid-row: auto;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .asset-slot.empty {
+    min-height: auto;
+    aspect-ratio: 3 / 4;
+  }
+
+  .asset-slot strong,
+  .asset-slot span {
+    padding: 7px;
+    font-size: 11px;
+  }
+
+  .asset-slot.empty em {
+    font-size: 11px;
   }
 
   main {
